@@ -151,7 +151,7 @@ function startCountdown() {
     const countdownSpan = document.getElementById('countdown');
     previewMessage.classList.add('show');
 
-    let count = 3;
+    let count = 10;
     countdownSpan.textContent = count;
 
     const countdownInterval = setInterval(function() {
@@ -173,7 +173,7 @@ function loadImage() {
         isImageLoaded = true;
         initTiles();
         renderPuzzle();
-        startCountdown();
+        //startCountdown();
     };
     img.onerror = function() {
         alert('이미지를 불러올 수 없습니다. public/images/cat.jpg 파일이 있는지 확인해주세요.');
