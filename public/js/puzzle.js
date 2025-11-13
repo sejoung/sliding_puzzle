@@ -1,5 +1,6 @@
-const GRID_SIZE = 4;
-const TILE_COUNT = GRID_SIZE * GRID_SIZE;
+const GRID_ROWS = 3;
+const GRID_COLS = 4;
+const TILE_COUNT = GRID_ROWS * GRID_COLS;
 const IMAGE_PATH = 'images/cat.jpg';
 
 let tiles = [];
@@ -36,8 +37,8 @@ function renderPuzzle() {
             tile.classList.add('empty');
             emptyIndex = i;
         } else {
-            const row = Math.floor(tiles[i] / GRID_SIZE);
-            const col = tiles[i] % GRID_SIZE;
+            const row = Math.floor(tiles[i] / GRID_COLS);
+            const col = tiles[i] % GRID_COLS;
             tile.style.backgroundImage = `url('${IMAGE_PATH}')`;
             tile.style.backgroundPosition = `-${col * tileSize}px -${row * tileSize}px`;
         }
@@ -51,10 +52,10 @@ function renderPuzzle() {
 
 // 이동 가능한지 확인
 function canMove(index) {
-    const emptyRow = Math.floor(emptyIndex / GRID_SIZE);
-    const emptyCol = emptyIndex % GRID_SIZE;
-    const tileRow = Math.floor(index / GRID_SIZE);
-    const tileCol = index % GRID_SIZE;
+    const emptyRow = Math.floor(emptyIndex / GRID_COLS);
+    const emptyCol = emptyIndex % GRID_COLS;
+    const tileRow = Math.floor(index / GRID_COLS);
+    const tileCol = index % GRID_COLS;
 
     // 같은 행에서 인접하거나 같은 열에서 인접한 경우
     return (emptyRow === tileRow && Math.abs(emptyCol - tileCol) === 1) ||
@@ -86,8 +87,8 @@ function checkWin() {
 // 이동 가능한 타일들의 인덱스 가져오기
 function getMovableTiles() {
     const movableTiles = [];
-    const emptyRow = Math.floor(emptyIndex / GRID_SIZE);
-    const emptyCol = emptyIndex % GRID_SIZE;
+    const emptyRow = Math.floor(emptyIndex / GRID_COLS);
+    const emptyCol = emptyIndex % GRID_COLS;
 
     // 상하좌우 확인
     const directions = [
@@ -101,8 +102,8 @@ function getMovableTiles() {
         const newRow = emptyRow + dir.row;
         const newCol = emptyCol + dir.col;
 
-        if (newRow >= 0 && newRow < GRID_SIZE && newCol >= 0 && newCol < GRID_SIZE) {
-            movableTiles.push(newRow * GRID_SIZE + newCol);
+        if (newRow >= 0 && newRow < GRID_ROWS && newCol >= 0 && newCol < GRID_COLS) {
+            movableTiles.push(newRow * GRID_COLS + newCol);
         }
     }
 

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4x4 슬라이딩 퍼즐</title>
+    <title>3x4 슬라이딩 퍼즐</title>
     <style>
         :root {
             --tile-size: 100px;
-            --puzzle-size: calc(var(--tile-size) * 4);
+            --puzzle-width: calc(var(--tile-size) * 4);
+            --puzzle-height: calc(var(--tile-size) * 3);
         }
 
         * {
@@ -106,7 +107,7 @@
         #puzzle {
             display: grid;
             grid-template-columns: repeat(4, var(--tile-size));
-            grid-template-rows: repeat(4, var(--tile-size));
+            grid-template-rows: repeat(3, var(--tile-size));
             gap: 2px;
             background: #333;
             padding: 2px;
@@ -118,7 +119,7 @@
         .tile {
             width: var(--tile-size);
             height: var(--tile-size);
-            background-size: var(--puzzle-size) var(--puzzle-size);
+            background-size: var(--puzzle-width) var(--puzzle-height);
             cursor: pointer;
             transition: all 0.2s;
             border-radius: 3px;
@@ -289,7 +290,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🧩 4x4 슬라이딩 퍼즐</h1>
+        <h1>🧩 3x4 슬라이딩 퍼즐</h1>
         <div class="game-info">
             <div class="moves">이동 횟수: <span id="moveCount">0</span></div>
             <div class="controls">
